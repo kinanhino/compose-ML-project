@@ -5,14 +5,17 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    
+    container_name: flask_app
     ports:
       - '5555:5555'
     env_file: ./.env
+    networks:
+      - flask_postgres_network
  
   postgress_server:
     image: postgres:14.1-alpine
     restart: always
+    container_name: postgres_server
     env_file: ./.env
     environment:
       - POSTGRES_USER=${DB_USERNAME}
@@ -21,6 +24,11 @@ services:
       - '5432:5432'
     volumes: 
       - db-postgres:/var/lib/postgresql/data
+    networks:
+      - flask_postgres_network
 volumes:
   db-postgres:
     driver: local
+networks:
+  flask_postgres_network:
+    name: flask_postgres_network
