@@ -42,5 +42,5 @@ this repo is for educational purposes to facilitate learning and experimentation
    ba decimal,
    predict decimal );
 * that's it the database contains the table and ready for work..
-4. go to localhost:5555/ to make some predictions and save it to the database
+4. go to [http://127.0.0.1:5555/](http://127.0.0.1:5555/) to make some predictions and save it to the database
 
