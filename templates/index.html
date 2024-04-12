@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <form action="/" method="post">
+        <h2>RD Prediction</h2>
+
+        <label for="Playoffs">Playoffs (0 or 1)</label>
+        <input type="number" id="Playoffs" name="Playoffs" max="1" min="0" value="{{ saved_values.playoffs }}" required>
+
+        <label for="OSLG">OSLG</label>
+        <input type="text" id="OSLG" name="OSLG" pattern="^\d+(\.\d+)?$" title="Please enter a valid float number" min="0" value="{{ saved_values.oslg }}" required>
+
+        <label for="OOBP">OOBP</label>
+        <input type="text" id="OOBP" name="OOBP" pattern="^\d+(\.\d+)?$" title="Please enter a valid float number" min="0" value="{{ saved_values.oobp }}" required>
+
+        <label for="OBP">OBP</label>
+        <input type="text" id="OBP" name="OBP" pattern="^\d+(\.\d+)?$" title="Please enter a valid float number" min="0" value="{{ saved_values.obp }}" required>
+
+        <label for="SLG">SLG</label>
+        <input type="text" id="SLG" name="SLG" pattern="^\d+(\.\d+)?$" title="Please enter a valid float number" value="{{ saved_values.slg }}" required>
+
+        <label for="Year">Year</label>
+        <input type="number" id="Year" name="Year" min="1970" max="2025" value="{{ saved_values.year }}" required>
+
+        <label for="G">G</label>
+        <input type="text" id="G" name="G" pattern="^\d+(\.\d+)?$" title="Please enter a valid float number" value="{{ saved_values.g }}" required>
+
+        <label for="BA">BA</label>
+        <input type="text" id="BA" name="BA" pattern="^\d+(\.\d+)?$" title="Please enter a valid float number" value="{{ saved_values.ba }}" required>
+
+        <label for="League">League (1 for NL, 0 for AL)</label>
+        <input type="number" id="League" name="League" min="0" max="1" value="{{ saved_values.league }}" required>
+
+
+        <button type="submit">Predict RD</button>
+
+        {% if prediction %}
+        <h2>Predicted RD: {{ prediction }}</h2>
+        {% endif %}
+    </form>
+
+
+</body>
+</html>
